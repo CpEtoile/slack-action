@@ -9,6 +9,17 @@ outputs:
   time:
     description: 'The time we greeted you'
 runs:
-  using: 'node16'
-  main: 'slack.js'
+  steps:
+    - id: hello
+      using: 'node16'
+      main: 'hello.js'
+    - name: 📋 Get release data
+      id: release
+      uses: actions/github-script@v6
+      env:
+        tag: '0'
+        slack_description: 'slack'
+      using: 'node16'
+      main: 'realse-data.js'
+
 
