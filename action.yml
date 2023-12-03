@@ -9,17 +9,23 @@ outputs:
   time:
     description: 'The time we greeted you'
 runs:
+  using: 'composite'
   steps:
     - id: hello
-      using: 'node16'
-      main: 'hello.js'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          console.log(`Hello`);
+          core.setOutput("hello", "here");
     - name: 📋 Get release data
       id: release
       uses: actions/github-script@v6
       env:
         tag: '0'
         slack_description: 'slack'
-      using: 'node16'
-      main: 'realse-data.js'
+      with:
+        script: |
+          console.log(`release`);
+          core.setOutput("release", "here");
 
 
