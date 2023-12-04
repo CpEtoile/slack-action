@@ -27,5 +27,9 @@ runs:
         script: |
           console.log(`release`);
           core.setOutput("release", "here");
+    - name: goodbye
+      id: goodbye
+      run: node hello.js
+      shell: bash
 
 
